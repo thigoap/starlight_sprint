@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Power Up Life
+  m_Controller: {fileID: 9100000, guid: 8a23b689781246f469b15795a1aa75b1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a9200db92b620f24f96c67fe13fdd5d6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d409ab6194a47e429a5c964770542a8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aacd3a898f27ff540a248b00bc7336a9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: df27e9a3ebc755c4c83ed3690d52b02c, type: 2}
