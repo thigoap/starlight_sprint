@@ -1263,8 +1263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a15feaf377f154fa357aec3d65c680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fxIconToggle: {fileID: 0}
-  musicIconToggle: {fileID: 0}
 --- !u!1 &1287326420
 GameObject:
   m_ObjectHideFlags: 0

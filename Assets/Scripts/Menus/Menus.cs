@@ -8,10 +8,6 @@ public class Menus : MonoBehaviour
 {
 
     SceneChanger sceneChanger;
-
-    public IconToggle fxIconToggle;
-    public IconToggle musicIconToggle;
-    
     // Text highDistanceText;
 
     private void Awake()
@@ -26,8 +22,6 @@ public class Menus : MonoBehaviour
         // highDistanceText.text = highDistance + " m";
 
         // Update Game Settings UI
-        musicIconToggle.ToggleIcon(AudioManager.Instance.musicEnabled);
-        fxIconToggle.ToggleIcon(AudioManager.Instance.sfxEnabled);
     }
 
     public void Run()
@@ -43,7 +37,8 @@ public class Menus : MonoBehaviour
 
     public void ToCredits()
     {
-        sceneChanger.ChangeScene("00 Credits");   
+        sceneChanger.ChangeScene("00 Credits");  
+        // PlayerPrefs.DeleteAll();
     }
 
     public void ToConfig()
@@ -65,25 +60,4 @@ public class Menus : MonoBehaviour
     {
         sceneChanger.ChangeScene("00 Boot");
     }
-
-
-
-    public void ToggleMusic()
-    {
-        AudioManager.Instance.musicEnabled = !AudioManager.Instance.musicEnabled;
-        if (!AudioManager.Instance.musicEnabled)
-            AudioManager.Instance.Stop();
-        else
-           AudioManager.Instance.Start(); 
-
-        musicIconToggle.ToggleIcon(AudioManager.Instance.musicEnabled);
-    }
-    
-    public void ToggleSFX()
-    {
-        AudioManager.Instance.sfxEnabled = !AudioManager.Instance.sfxEnabled;
-
-        fxIconToggle.ToggleIcon(AudioManager.Instance.sfxEnabled);
-    }
-
 }

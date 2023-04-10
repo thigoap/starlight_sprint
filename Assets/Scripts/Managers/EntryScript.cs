@@ -14,7 +14,7 @@ public class EntryScript : MonoBehaviour
 
     public void AudioStart()
     {
-        AudioManager.Instance.PlayInGameSong();
+        AudioManager.Instance.PlayCityThemeSong();
     }
 
     public void CallGoText()

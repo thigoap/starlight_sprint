@@ -8,7 +8,9 @@ public class Bulldozer : Obstacle
 
     private void OnTriggerStay2D(Collider2D collider)
     {        
-        if (collider.CompareTag("Player") && !playerController.isSliding)
+        // if (collider.CompareTag("Player") && !playerController.isSliding)
+        if (collider.CompareTag("Player") && !skinController.isSliding)
+        
         {
             TakeHit();
             anim.SetTrigger("obstacleHit");

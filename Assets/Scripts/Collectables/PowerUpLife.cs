@@ -6,9 +6,13 @@ public class PowerUpLife : Collectable
 {
     PlayerHealth playerHealth;
 
+    string skinName;
+
     void Awake()
     {
-        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        skinName = GameManager.Instance.DefineSkinName();
+        // playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<PlayerHealth>();
     }
 
     public override void Collect()

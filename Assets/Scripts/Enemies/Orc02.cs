@@ -14,7 +14,8 @@ public class Orc02 : Enemy
     {        
         if (collider.CompareTag("Player"))
         {
-            if (playerController.isSliding)
+            // if (playerController.isSliding)
+            if (skinController.isSliding)
             {
                 StartCoroutine(KillEnemy());
                 powSR.enabled = true;

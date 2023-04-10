@@ -8,7 +8,8 @@ public class Orc01 : Enemy
     {        
         if (collider.CompareTag("Player"))
         {
-            if (playerController.isSliding || !playerController.isGrounded)
+            // if (playerController.isSliding || !playerController.isGrounded)
+            if (skinController.isSliding || !skinController.isGrounded)
             {
                 StartCoroutine(KillEnemy());
                 powSR.enabled = true;

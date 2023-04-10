@@ -16,7 +16,7 @@ public class AudioManager : Singleton<AudioManager>
     
     [Header("Audio Clips")]    
     public AudioClip menuSong;
-    public AudioClip inGameSong;
+    public AudioClip cityThemeSong;
     public AudioClip jumpSFX;
     public AudioClip slideSFX;
     public AudioClip coinCollectedSFX;
@@ -37,10 +37,10 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void PlayInGameSong()
+    public void PlayCityThemeSong()
     {
         musicSource.Stop();        
-        musicSource.clip = inGameSong;
+        musicSource.clip = cityThemeSong;
         if (musicEnabled)
         {
             musicSource.Play(); 

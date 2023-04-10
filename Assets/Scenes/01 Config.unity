@@ -545,8 +545,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1250746014}
-        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+      - m_Target: {fileID: 1250746015}
+        m_TargetAssemblyTypeName: ConfigMenu, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
@@ -1355,8 +1355,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1250746014}
-        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+      - m_Target: {fileID: 1250746015}
+        m_TargetAssemblyTypeName: ConfigMenu, Assembly-CSharp
         m_MethodName: ToggleSFX
         m_Mode: 1
         m_Arguments:
@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version Build 0.2.5
+  m_text: Version Build 0.3.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4ef5f6c69e42dc448c88b5367486295, type: 2}
   m_sharedMaterial: {fileID: -6787797688747580003, guid: d4ef5f6c69e42dc448c88b5367486295, type: 2}
@@ -1704,6 +1704,7 @@ GameObject:
   - component: {fileID: 1250746013}
   - component: {fileID: 1250746012}
   - component: {fileID: 1250746014}
+  - component: {fileID: 1250746015}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1785,6 +1786,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a15feaf377f154fa357aec3d65c680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1250746015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250746010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e67682f579e70743859ea528006e877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fxIconToggle: {fileID: 1077908652}
