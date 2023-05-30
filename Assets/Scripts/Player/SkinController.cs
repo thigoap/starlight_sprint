@@ -28,7 +28,7 @@ public class SkinController : MonoBehaviour
 
     // Coyote Time
     float hangTime = 0.03f;
-    public float hangTimeCounter;
+    float hangTimeCounter;
 
     // Jump Buffer
     // float jumpBufferLength = 0.01f;

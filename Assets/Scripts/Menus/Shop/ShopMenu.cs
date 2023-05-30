@@ -107,7 +107,6 @@ public class ShopMenu : MonoBehaviour
         skin = true;
         UpdateSelection();
         UpdateSelector(male, skin);
-  
     }
 
     public void KitButtonPressed()

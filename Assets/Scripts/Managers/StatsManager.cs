@@ -11,25 +11,27 @@ public class StatsManager : Singleton<StatsManager>
     float distance;
     public float highDistance;
 
-    int enemiesHit = 0;
+    public int enemiesHit = 0;
     public int totalEnemiesHit;
     
     void Start()
     {
-        PlayerPrefs.SetFloat("HighDistance", 0);
-        PlayerPrefs.SetInt("TotalCoins", 0);
-        PlayerPrefs.SetInt("TotalEnemiesHit", 0);
-        
+        // only for testing
+        // PlayerPrefs.SetFloat("HighDistance", 0);
+        // PlayerPrefs.SetInt("TotalCoins", 0);
+        // PlayerPrefs.SetInt("TotalEnemiesHit", 0);
+        // only for testing
+
         totalCoins = PlayerPrefs.GetInt("TotalCoins");
         highDistance = PlayerPrefs.GetFloat("HighDistance");
         totalEnemiesHit = PlayerPrefs.GetInt("TotalEnemiesHit");
     }
 
-    public void UpdateStats()
+    public void SaveStats()
     {
         SaveHighDistance();
-        UpdateTotalCoins(coinQtty);
-        UpdateEnemiesHit();
+        SaveTotalCoins(coinQtty);
+        SaveEnemiesHit();
         multiplier = 1;
         coinQtty = 0;
         enemiesHit = 0;
@@ -58,7 +60,7 @@ public class StatsManager : Singleton<StatsManager>
         UIManager.Instance.UpdateCoinQtty();
     }
 
-    public void UpdateTotalCoins(int amount)
+    public void SaveTotalCoins(int amount)
     {
         totalCoins += amount;
         PlayerPrefs.SetInt("TotalCoins", totalCoins);
@@ -67,11 +69,18 @@ public class StatsManager : Singleton<StatsManager>
     public void EnemyHit()
     {
         enemiesHit++;
+        UIManager.Instance.UpdateEnemiesHit();
     }    
 
-    public void UpdateEnemiesHit()
+    public void SaveEnemiesHit()
     {
         totalEnemiesHit += enemiesHit;    
         PlayerPrefs.SetInt("TotalEnemiesHit", totalEnemiesHit);
+    }
+
+    public void UpdateMultiplier()
+    {
+        multiplier++;
+        UIManager.Instance.UpdateMultiplier();
     }
 }

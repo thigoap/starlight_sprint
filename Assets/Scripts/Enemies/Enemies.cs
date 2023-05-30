@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
     public void TakeHit()
     {
         playerHealth.LoseLife(1);
-        StatsManager.Instance.multiplier = 1;
+        StatsManager.Instance.multiplier = 0;
+        StatsManager.Instance.UpdateMultiplier();
         // anim.SetTrigger("enemyHit");
         AudioManager.Instance.PlayTakeHitSFX();
         StartCoroutine(GameManager.Instance.SlowVelocity());
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
         StatsManager.Instance.EnemyHit();
         StatsManager.Instance.GainCoin(StatsManager.Instance.multiplier);
         if (StatsManager.Instance.multiplier < 5)
-            StatsManager.Instance.multiplier++;
+            StatsManager.Instance.UpdateMultiplier();
         CameraShake.Instance.StartShaking();
         sr.color = new Color(1f, 0, 0, 1f);
         yield return new WaitForSeconds(0.2f);

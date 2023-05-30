@@ -15,6 +15,7 @@ public class KitController : MonoBehaviour
     
     public Animator animator;
     public Transform groundCheck;
+    public GameObject lifePosition;
     public LayerMask groundLayer;
     
     public bool canSlide = true;
@@ -132,6 +133,8 @@ public class KitController : MonoBehaviour
         slideTimeCounter = slideTime;
     }
 
+    
+
     public IEnumerator DamagePlayer()
     {
         CameraShake.Instance.StartShaking();
@@ -147,11 +150,15 @@ public class KitController : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         if (PlayerHealth.life == 0)
+        {
             sr.enabled = false;
+            HideLife();
+        }
     }
 
     public IEnumerator RecoverKit()
     {
+        lifePosition.SetActive(false);
         for (int i=0; i < 3; i++)
         {
             sr.enabled = false;
@@ -161,9 +168,14 @@ public class KitController : MonoBehaviour
         }   
     }
 
-    // public void LoseKit()
-    // {
-    //     sr.enabled = false;
-    // }
+    public void ShowLife()
+    {
+        lifePosition.SetActive(true);
+    }
+    public void HideLife()
+    {
+        lifePosition.SetActive(false);
+    }
+    
 
 }

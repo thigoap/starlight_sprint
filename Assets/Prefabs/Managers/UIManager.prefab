@@ -45,3 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsQttyText: {fileID: 0}
+  enemiesHitText: {fileID: 0}
+  multiplierSr: {fileID: 0}
+  multi2x: {fileID: 21300000, guid: f45941097080b4a43a30a2671c7c5238, type: 3}
+  multi3x: {fileID: 21300000, guid: fc0cab5d7131e0c4a93352cbeb863898, type: 3}
+  multi4x: {fileID: 21300000, guid: a3a0e895022d53c44bf42f3830a6ef5b, type: 3}
+  multi5x: {fileID: 21300000, guid: 65fc2fd2bab2fdd47a86c9d6f17de185, type: 3}

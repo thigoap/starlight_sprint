@@ -10,8 +10,9 @@ public class PlayerHealth : MonoBehaviour
     string skinName;
     string kitName;
     
-    int maxLife = 2;
+    public int maxLife = 2;
     public static int life;
+    public int lifeinscreen;
 
     void Start()
     {
@@ -21,13 +22,21 @@ public class PlayerHealth : MonoBehaviour
         kitController = GameObject.Find("Player " + kitName + "(Clone)").GetComponent<KitController>();
 
         life = maxLife;
+        lifeinscreen = life;
     }
 
     public void GainLife(int amount)
     {
-        life = life + amount;
-        if (life == 1)
-            StartCoroutine(kitController.RecoverKit());
+        if (life < maxLife)
+        {
+            // life = life + amount;
+            lifeinscreen = life;
+            if (life == 1)
+                kitController.HideLife();
+            if (life == 0)
+                StartCoroutine(kitController.RecoverKit());
+            life = maxLife;
+        }
     }
 
     public void LoseLife(int amount)
@@ -38,18 +47,19 @@ public class PlayerHealth : MonoBehaviour
             // collider.GetComponent<PolygonCollider2D>().enabled = false;
             // Debug.Log("Hit Obstacle");
             life = life - amount;
+            lifeinscreen = life;
             // StartCoroutine(skinController.DamagePlayer()); 
             StartCoroutine(kitController.DamagePlayer());
         }
-        // else if (life == 1)
-        // {
-        //     life = life - amount;
-        //     kitController.LoseKit();
-        // }
         else if (life == 0)
         {
             SkinController.isDead = true;
             GameManager.Instance.GameOver();  
+        }
+
+        if (life == 1)
+        {
+            kitController.ShowLife();
         }
         
     }

@@ -83,7 +83,7 @@ public class GameManager : Singleton<GameManager>
         kitController.animator.SetTrigger("stop");
     
         AudioManager.Instance.Stop();
-        StatsManager.Instance.UpdateStats();
+        StatsManager.Instance.SaveStats();
     } 
 
     public void Retry()

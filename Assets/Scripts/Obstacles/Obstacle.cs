@@ -22,7 +22,8 @@ public abstract class Obstacle : MonoBehaviour
     public void TakeHit()
     {
         playerHealth.LoseLife(1);
-        StatsManager.Instance.multiplier = 1;
+        StatsManager.Instance.multiplier = 0;
+        StatsManager.Instance.UpdateMultiplier();
         AudioManager.Instance.PlayTakeHitSFX();
         StartCoroutine(GameManager.Instance.SlowVelocity());
     }
