@@ -17,14 +17,17 @@ public class ShopMenu : MonoBehaviour
     SkinLoader skinLoader;
     KitLoader kitLoader;
 
-    [SerializeField] bool male = true;
-    [SerializeField] bool skin = true;
-    
+    // [SerializeField] bool male = true;
+    // [SerializeField] bool skin = true;
+    [SerializeField] bool male;
+    [SerializeField] bool skin;
         
     void Start()
     {
+        male = (PlayerPrefs.GetInt("male") != 0);
+
         UpdateSelection(); 
-        UpdateSelector(male, skin); 
+        UpdateButtonColor(male, skin); 
 
         skinLoader = GameObject.Find("Skin Loader").GetComponent<SkinLoader>();
         kitLoader = GameObject.Find("Kit Loader").GetComponent<KitLoader>();
@@ -66,7 +69,7 @@ public class ShopMenu : MonoBehaviour
         }
     }
 
-    void UpdateSelector(bool male, bool skin)
+    void UpdateButtonColor(bool male, bool skin)
     {
         maleIconToggle.ToggleIcon(male);
         femaleIconToggle.ToggleIcon(!male);
@@ -84,8 +87,10 @@ public class ShopMenu : MonoBehaviour
         kitLoader.ChoosenKit("Kit Male 01");
         PlayerPrefs.SetString("selectedKit", "Kit Male 01");
 
+        PlayerPrefs.SetInt("male", (male ? 1 : 0));
+
         UpdateSelection();
-        UpdateSelector(male, skin);
+        UpdateButtonColor(male, skin);
     }
 
     public void FemaleButtonPressed()
@@ -98,22 +103,24 @@ public class ShopMenu : MonoBehaviour
         kitLoader.ChoosenKit("Kit Female 01");
         PlayerPrefs.SetString("selectedKit", "Kit Female 01");
 
+        PlayerPrefs.SetInt("male", (male ? 1 : 0));
+
         UpdateSelection();
-        UpdateSelector(male, skin);
+        UpdateButtonColor(male, skin);
     }
     
     public void SkinButtonPressed()
     {
         skin = true;
         UpdateSelection();
-        UpdateSelector(male, skin);
+        UpdateButtonColor(male, skin);
     }
 
     public void KitButtonPressed()
     {
         skin = false;
         UpdateSelection();
-        UpdateSelector(male, skin);
+        UpdateButtonColor(male, skin);
     }
     
 }

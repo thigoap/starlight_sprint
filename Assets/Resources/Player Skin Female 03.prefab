@@ -111,12 +111,12 @@ SpriteRenderer:
   m_SortingLayerID: 1580142749
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1600173807, guid: aa0ed3e24c216f5418e14d9044446778, type: 3}
+  m_Sprite: {fileID: 1467391620, guid: aa0ed3e24c216f5418e14d9044446778, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4166666, y: 2.0833333}
+  m_Size: {x: 2.6666667, y: 2.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -143,7 +143,6 @@ MonoBehaviour:
   canSlide: 1
   isGrounded: 0
   isSliding: 0
-  hangTimeCounter: 0
 --- !u!114 &7781244479832302123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cde5188df2fc59499738435ebca96fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 2
+  lifeinscreen: 0
 --- !u!95 &2723281923681296721
 Animator:
   serializedVersion: 4

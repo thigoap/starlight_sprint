@@ -30,11 +30,11 @@ public class StatsManager : Singleton<StatsManager>
     public void SaveStats()
     {
         SaveHighDistance();
-        SaveTotalCoins(coinQtty);
+        SaveTotalCoins();
         SaveEnemiesHit();
-        multiplier = 1;
-        coinQtty = 0;
-        enemiesHit = 0;
+        // multiplier = 1;
+        // coinQtty = 0;
+        // enemiesHit = 0;
     }
 
     public void SaveHighDistance()
@@ -45,6 +45,7 @@ public class StatsManager : Singleton<StatsManager>
         {
             PlayerPrefs.SetFloat("HighDistance", distance);
             highDistance = distance;
+            GameOverMenu.Instance.ShowRecordTag();
         }
     }
 
@@ -60,9 +61,9 @@ public class StatsManager : Singleton<StatsManager>
         UIManager.Instance.UpdateCoinQtty();
     }
 
-    public void SaveTotalCoins(int amount)
+    public void SaveTotalCoins()
     {
-        totalCoins += amount;
+        totalCoins += coinQtty;
         PlayerPrefs.SetInt("TotalCoins", totalCoins);
     }
 

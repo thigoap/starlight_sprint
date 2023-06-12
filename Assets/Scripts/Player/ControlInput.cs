@@ -18,6 +18,18 @@ public class ControlInput : MonoBehaviour
         kitController = GameObject.Find("Player " + kitName + "(Clone)").GetComponent<KitController>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Jump();
+        }
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Slide();
+        }
+    }
+
     public void Jump()
     {
         skinController.Jump();

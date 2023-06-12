@@ -7,7 +7,6 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    // PlayerController playerController;
     SkinController skinController;
     KitController kitController;
     string skinName;
@@ -57,11 +56,10 @@ public class GameManager : Singleton<GameManager>
         kitName = DefineKitName();
 
         UIManager.Instance.LoadUI();
-        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
         skinController = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<SkinController>();
         kitController = GameObject.Find("Player " + kitName + "(Clone)").GetComponent<KitController>();
         
-        // playerController.animator.SetTrigger("start");
         skinController.animator.SetTrigger("start");
         kitController.animator.SetTrigger("start");
         
@@ -78,7 +76,6 @@ public class GameManager : Singleton<GameManager>
         GameOverMenu.Instance.GameOver();
 
         velocity = 0f;
-        // playerController.animator.SetTrigger("stop");
         skinController.animator.SetTrigger("stop");
         kitController.animator.SetTrigger("stop");
     
@@ -100,6 +97,10 @@ public class GameManager : Singleton<GameManager>
         isPlaying = false;
         isPaused = false;
         gameOver = false;
+
+        StatsManager.Instance.multiplier = 1;
+        StatsManager.Instance.coinQtty = 0;
+        StatsManager.Instance.enemiesHit = 0;
     }
 
     public IEnumerator SlowVelocity()

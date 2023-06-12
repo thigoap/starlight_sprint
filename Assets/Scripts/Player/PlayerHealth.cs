@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     string kitName;
     
     public int maxLife = 2;
-    public static int life;
+    [SerializeField] public static int life;
     public int lifeinscreen;
 
     void Start()
@@ -29,13 +29,19 @@ public class PlayerHealth : MonoBehaviour
     {
         if (life < maxLife)
         {
-            // life = life + amount;
             lifeinscreen = life;
             if (life == 1)
+            {
                 kitController.HideLife();
+                Debug.Log("Hide Life");
+            }
             if (life == 0)
+            {
                 StartCoroutine(kitController.RecoverKit());
-            life = maxLife;
+                kitController.ShowLife();
+            }
+            life++;
+            lifeinscreen = life;
         }
     }
 

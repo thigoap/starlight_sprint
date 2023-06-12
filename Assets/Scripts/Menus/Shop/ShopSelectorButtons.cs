@@ -7,7 +7,6 @@ public class ShopSelectorButtons : MonoBehaviour
 
     SkinLoader skinLoader;
     KitLoader kitLoader;
-    // SkinFemaleLoader skinFemaleLoader;
     
     void Awake()
     {

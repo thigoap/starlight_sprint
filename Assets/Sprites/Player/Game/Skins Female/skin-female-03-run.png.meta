@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edeb16be652e81944be51f7dbfb10f5f
-      internalID: 1600173807
+      spriteID: d40d10d6c5150224c942d732dce087e6
+      internalID: 1467391620
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80f7738287eeade468ea8f6217f54161
-      internalID: -413172945
+      spriteID: 0bb344d6592676142aea2a21097b1aaa
+      internalID: 1992107063
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37e2f9997dbf37b408f4add46f79cd91
-      internalID: -1976025610
+      spriteID: 6e3073d99dce57845b740f3e34b7ea89
+      internalID: 1459093349
       vertices: []
       indices: 
       edges: []
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 504ddb188d2a671468106679c0bce99b
-      internalID: 1353569003
+      spriteID: 4369a4f9dc2839943a6186f384a0602a
+      internalID: 27792566
       vertices: []
       indices: 
       edges: []
@@ -226,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60f1010438ccde74f9c5c49b2b6b84b9
-      internalID: -785832628
+      spriteID: aa2037823cfcb19498cc403f739d1ba5
+      internalID: 469145763
       vertices: []
       indices: 
       edges: []
@@ -247,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02553d03573166143bd838f097c1795c
-      internalID: -474309629
+      spriteID: 166f57b83da6c184db576a00447f2f0a
+      internalID: 988395931
       vertices: []
       indices: 
       edges: []
@@ -264,12 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      skin-female-03-run_2: -1976025610
-      skin-female-03-run_5: -474309629
-      skin-female-03-run_0: 1600173807
-      skin-female-03-run_4: -785832628
-      skin-female-03-run_3: 1353569003
-      skin-female-03-run_1: -413172945
+      skin-female-03-run_2: 1459093349
+      skin-female-03-run_5: 988395931
+      skin-female-03-run_0: 1467391620
+      skin-female-03-run_4: 469145763
+      skin-female-03-run_3: 27792566
+      skin-female-03-run_1: 1992107063
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

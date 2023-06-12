@@ -993,7 +993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -75}
+  m_AnchoredPosition: {x: 33.399994, y: -75}
   m_SizeDelta: {x: 35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643742104
@@ -1119,7 +1119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -70}
+  m_AnchoredPosition: {x: 103.399994, y: -70}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686006179
@@ -1984,7 +1984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 27, y: -55}
+  m_AnchoredPosition: {x: 139.8, y: -32.1}
   m_SizeDelta: {x: 35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1234571697
@@ -2349,7 +2349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -33.5}
+  m_AnchoredPosition: {x: 33.4, y: -33.5}
   m_SizeDelta: {x: 35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505596338
@@ -2674,22 +2674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2083580115}
     m_Modifications:
-    - target: {fileID: 3099387399745904464, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -51.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387399745904465, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_margin.x
-      value: -14.948494
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387399745904465, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_margin.z
-      value: 16.82251
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387399745904465, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3099387399997799948, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
       propertyPath: m_Name
       value: Game Over Menu
@@ -2777,18 +2761,6 @@ PrefabInstance:
     - target: {fileID: 3099387399997799949, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387400387943656, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_text
-      value: 1000 m
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387400387943656, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_margin.x
-      value: -14.266285
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099387400387943656, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6733d5e203d6aa0439a647adf648d2b9, type: 3}
@@ -3245,6 +3217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 6576119019904424824, guid: bedeab26ab5c86445a6ee56c5678141b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6576119019904424825, guid: bedeab26ab5c86445a6ee56c5678141b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3382,7 +3358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -30}
+  m_AnchoredPosition: {x: 103.399994, y: -30}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137783114
@@ -3405,7 +3381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4ef5f6c69e42dc448c88b5367486295, type: 2}
   m_sharedMaterial: {fileID: -6787797688747580003, guid: d4ef5f6c69e42dc448c88b5367486295, type: 2}

@@ -33,7 +33,7 @@ public class PauseMenu : Singleton<PauseMenu>
     public void ToCockpit()
     {
         gameObject.SetActive(false);  
-        StatsManager.Instance.SaveStats();     
+        // StatsManager.Instance.SaveStats();   
         GameManager.Instance.ResetGame();
         SceneManager.LoadScene("01 Cockpit");
         AudioManager.Instance.Start();

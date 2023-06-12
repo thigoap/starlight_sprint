@@ -61,23 +61,18 @@ public class UIManager : Singleton<UIManager>
         switch(StatsManager.Instance.multiplier) 
         {
         case 1:
-            Debug.Log(StatsManager.Instance.multiplier.ToString());
             multiplierSr.enabled = false;
             break;
         case 2:
-            Debug.Log(StatsManager.Instance.multiplier.ToString());
             multiplierSr.sprite = multi2x;
             break;
         case 3:
-            Debug.Log(StatsManager.Instance.multiplier.ToString());
             multiplierSr.sprite = multi3x;
             break;
         case 4:
-            Debug.Log(StatsManager.Instance.multiplier.ToString());
             multiplierSr.sprite = multi4x;
             break;
         case 5:
-            Debug.Log(StatsManager.Instance.multiplier.ToString());
             multiplierSr.sprite = multi5x;
             break;
         default:
