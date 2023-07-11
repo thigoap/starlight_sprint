@@ -15,8 +15,10 @@ public class SkinController : MonoBehaviour
     
     public Animator animator;
     public Transform groundCheck;
-    public Transform dustPosition;
     public LayerMask groundLayer;
+    
+    public Transform dustPosition;
+    public Transform diamondPosition;
     
     public bool canSlide = true;
     public static bool isDead;
@@ -34,14 +36,12 @@ public class SkinController : MonoBehaviour
     // float jumpBufferLength = 0.01f;
     // public float jumpBufferCounter;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
-    {
+    void Update() {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.8f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
         
         if (isGrounded)
@@ -52,11 +52,9 @@ public class SkinController : MonoBehaviour
         animator.SetBool("isSliding", isSliding);    
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         /* coyote time */
-        if (isGrounded)
-        {
+        if (isGrounded) {
             hangTimeCounter = hangTime;
         } else {
             hangTimeCounter -= Time.fixedDeltaTime;
@@ -73,8 +71,7 @@ public class SkinController : MonoBehaviour
         // }     
 
         /* slide */
-        if (isSliding)
-        {
+        if (isSliding) {
             slideTimeCounter -= Time.fixedDeltaTime;
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(0, 0);
@@ -83,12 +80,10 @@ public class SkinController : MonoBehaviour
 
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         ResetSlide();    
-        if (hangTimeCounter > 0f) /* coyote time */
+        if (hangTimeCounter > 0f) { /* coyote time */
         // if (jumpBufferCounter >= 0f || hangTimeCounter >= 0f) /* jump buffer + coyote time */
-        {
             AudioManager.Instance.PlayJumpSFX();
             rb.velocity = new Vector2(0, jumpForce);
             /* double jump */
@@ -100,61 +95,66 @@ public class SkinController : MonoBehaviour
             /* counter to avoid a second jump due to jump buffer */
             // jumpBufferCounter = 0f;
 
-        } else if (doubleJump)
-        {
+        } else if (doubleJump) {
             AudioManager.Instance.PlayJumpSFX();
             rb.velocity = new Vector2(0, jumpForce);
             doubleJump = false;       
         }
     }
 
-    public void ReleaseJump()
-    {
+    public void ReleaseJump() {
         if (rb.velocity.y > 0)
             rb.velocity = new Vector2(0, rb.velocity.y * 0.6f);
     }
 
-    public void Slide()
-    {
-        if (!isSliding && canSlide)
-        {
+    public void Slide() {
+        if (!isSliding && canSlide) {
             AudioManager.Instance.PlaySlideSFX();
-            GameManager.Instance.velocity = 24f;
+            GameManager.Instance.velocity = GameManager.Instance.slideVelocity;
             isSliding = true;
             
             GameObject dust = DustPool.instance.GetPooledOject();
-            if (isGrounded)
-            {
+            if (isGrounded) {
                 dust.transform.position = dustPosition.position;
                 dust.SetActive(true);
             }
         }
     }
 
-    public void ResetSlide()
-    {
+    public void ResetSlide() {
         DustPool.instance.StopDustEffect();
         isSliding = false;
         rb.gravityScale = 7f;
-        GameManager.Instance.velocity = 12f;
+        GameManager.Instance.velocity = GameManager.Instance.baseVelocity;
         slideTimeCounter = slideTime;
     }
 
-    public IEnumerator DamagePlayer()
-    {
+    public IEnumerator DamagePlayer() {
         // CameraShake.Instance.StartShaking();
         sr.color = new Color(1f, 0, 0, 1f);
         yield return new WaitForSeconds(0.2f);
         sr.color = new Color(1f, 1f, 1f, 1f);
 
-        for (int i=0; i < 3; i++)
-        {
+        for (int i=0; i < 3; i++) {
             sr.enabled = false;
             yield return new WaitForSeconds(0.15f);
             sr.enabled = true;
             yield return new WaitForSeconds(0.15f);
         }
     }
+
+    public void GainDiamond() {
+        // Debug.Log("Gain Diamond");
+        GameObject diamond = DiamondPool.instance.GetPooledOject();
+        diamond.transform.position = diamondPosition.position;
+        diamond.SetActive(true);
+        StartCoroutine(StopDiamondEffect());
+    }
+
+    public IEnumerator StopDiamondEffect() {
+        yield return new WaitForSeconds(1.0f);
+        DiamondPool.instance.StopDiamondEffect(); 
+        }  
 
 }
 

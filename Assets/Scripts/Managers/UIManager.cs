@@ -18,24 +18,20 @@ public class UIManager : Singleton<UIManager>
     public Sprite multi3x;
     public Sprite multi4x;
     public Sprite multi5x;
- 
 
-    void Start()
-    {
+    public bool visibleControls = true;
+    public Image jumpButton;
+    public Image attackButton;
+     
 
-    }
-
-    void Update()
-    {
-        if (GameManager.Instance.isPlaying)
-        {
+    void Update() {
+        if (GameManager.Instance.isPlaying) {
             int distance = Mathf.FloorToInt(GameManager.Instance.distance);
             curDistanceDistanceText.text = distance + " m";
         }
     }
 
-    public void LoadUI()
-    {
+    public void LoadUI() {
         curDistanceDistanceText = GameObject.Find("Current Distance Distance Text").GetComponent<TextMeshProUGUI>();
         coinsQttyText = GameObject.Find("Coins Quantity Text").GetComponent<TextMeshProUGUI>();
         enemiesHitText = GameObject.Find("Enemies Hit Text").GetComponent<TextMeshProUGUI>();
@@ -44,19 +40,24 @@ public class UIManager : Singleton<UIManager>
         var tempColor = multiplierSr.color;
         tempColor.a = 1f;
         multiplierSr.color = tempColor;
+
+        jumpButton = GameObject.Find("Jump Button Image").GetComponent<Image>();
+        attackButton = GameObject.Find("Attack Button Image").GetComponent<Image>();
+        if (!visibleControls) {
+            jumpButton.enabled = false;
+            attackButton.enabled = false;
+        }        
     }
 
-    public void UpdateCoinQtty()
-    {
+
+    public void UpdateCoinQtty() {
         coinsQttyText.text = StatsManager.Instance.coinQtty.ToString();
     }
-    public void UpdateEnemiesHit()
-    {
+    public void UpdateEnemiesHit() {
         enemiesHitText.text = StatsManager.Instance.enemiesHit.ToString();
     }
 
-    public void UpdateMultiplier()
-    {
+    public void UpdateMultiplier() {
         multiplierSr.enabled = true;
         switch(StatsManager.Instance.multiplier) 
         {
@@ -79,9 +80,6 @@ public class UIManager : Singleton<UIManager>
             multiplierSr.enabled = false;
             break;
         }
-
-    }
-
-    
+    }   
 
 }

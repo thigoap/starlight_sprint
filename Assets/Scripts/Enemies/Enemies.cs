@@ -8,25 +8,20 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Animator anim;
     [HideInInspector] public SpriteRenderer sr;
     [HideInInspector] public PlayerHealth playerHealth;
-    // [HideInInspector] public PlayerController playerController;
     [HideInInspector] public SkinController skinController;
     
     string skinName;
 
-    void Awake()
-    {
+    void Awake() {
         sr = GetComponent<SpriteRenderer>();
         powSR.enabled = false;
         
         skinName = GameManager.Instance.DefineSkinName();
-        // playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
-        playerHealth = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<PlayerHealth>();
-        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();   
+        playerHealth = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<PlayerHealth>();  
         skinController = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<SkinController>();     
     }
 
-    public void TakeHit()
-    {
+    public void TakeHit() {
         playerHealth.LoseLife(1);
         StatsManager.Instance.multiplier = 0;
         StatsManager.Instance.UpdateMultiplier();
@@ -35,8 +30,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(GameManager.Instance.SlowVelocity());
     }
 
-    public IEnumerator KillEnemy()
-    {
+    public IEnumerator KillEnemy() {
         AudioManager.Instance.PlayGiveHitSFX();
         StatsManager.Instance.EnemyHit();
         StatsManager.Instance.GainCoin(StatsManager.Instance.multiplier);

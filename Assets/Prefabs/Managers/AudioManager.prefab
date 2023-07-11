@@ -50,7 +50,7 @@ MonoBehaviour:
   sfxEnabled: 1
   musicSource: {fileID: 8041140494440299801}
   SFXSource: {fileID: 8041140495161557593}
-  menuSong: {fileID: 8300000, guid: e0abeab7f0375d74595e1075ba3bd221, type: 3}
+  menuSong: {fileID: 8300000, guid: 8db583d444afa654c854b9e3bcc5dae3, type: 3}
   cityThemeSong: {fileID: 8300000, guid: 0ab994ecc50cc8c4987818d7384abf25, type: 3}
   jumpSFX: {fileID: 8300000, guid: ac26ed9f91a97c94c917cdb946c51dc0, type: 3}
   slideSFX: {fileID: 8300000, guid: b4217a24ddfe8774b8b08864f150fe3b, type: 3}
@@ -59,6 +59,8 @@ MonoBehaviour:
   takeHitSFX: {fileID: 8300000, guid: a36c9c0162671aa4a8a6b0247eb95bc3, type: 3}
   giveHitSFX: {fileID: 8300000, guid: 06d6fb6d86ceb294e9a3c573d426934f, type: 3}
   gameOverSFX: {fileID: 8300000, guid: 3ac8eeead4f67614b9e11a9dfc89c5ae, type: 3}
+  buyConfirmedSFX: {fileID: 8300000, guid: 470a9570b15379b42975835f46453097, type: 3}
+  buyErrorSFX: {fileID: 8300000, guid: 753c4ba0fc938d1449d24e5f522c0f3a, type: 3}
 --- !u!1 &8041140494440299802
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +233,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -22,11 +22,18 @@ public class ControlInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Jump();
+            if (GameManager.Instance.isPlaying)
+                Jump();
         }
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Slide();
+            if (GameManager.Instance.isPlaying)
+                Slide();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (GameManager.Instance.isPlaying)
+                PauseMenu.Instance.Pause();
         }
     }
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ShopMenu : MonoBehaviour
+public class ShopMenu : Singleton<ShopMenu>
 {
+    ShopManager shopManager;
+
     public GameObject skinMaleScrollView;
     public GameObject kitMaleScrollView;
     public GameObject skinFemaleScrollView;
@@ -17,20 +20,28 @@ public class ShopMenu : MonoBehaviour
     SkinLoader skinLoader;
     KitLoader kitLoader;
 
-    // [SerializeField] bool male = true;
-    // [SerializeField] bool skin = true;
-    [SerializeField] bool male;
-    [SerializeField] bool skin;
-        
+    public TextMeshProUGUI totalCoinsText;
+    int totalCoins;
+    public TextMeshProUGUI totalDiamondsText;
+    int totalDiamonds;
+
+    [SerializeField] public bool male;
+    [SerializeField] public bool skin;
+    
+
     void Start()
     {
-        male = (PlayerPrefs.GetInt("male") != 0);
+        male = (PlayerPrefs.GetInt("male", 1) == 1);
 
         UpdateSelection(); 
         UpdateButtonColor(male, skin); 
 
         skinLoader = GameObject.Find("Skin Loader").GetComponent<SkinLoader>();
         kitLoader = GameObject.Find("Kit Loader").GetComponent<KitLoader>();
+
+        totalCoinsText = GameObject.Find("Coins Quantity Text").GetComponent<TextMeshProUGUI>();
+        totalDiamondsText = GameObject.Find("Diamonds Quantity Text").GetComponent<TextMeshProUGUI>();
+        UpdateTotalBudget();
     }
 
     void UpdateSelection()
@@ -87,7 +98,9 @@ public class ShopMenu : MonoBehaviour
         kitLoader.ChoosenKit("Kit Male 01");
         PlayerPrefs.SetString("selectedKit", "Kit Male 01");
 
-        PlayerPrefs.SetInt("male", (male ? 1 : 0));
+        // PlayerPrefs.SetInt("male", (male ? 1 : 0));
+        PlayerPrefs.SetInt("male", 1);
+    
 
         UpdateSelection();
         UpdateButtonColor(male, skin);
@@ -103,7 +116,8 @@ public class ShopMenu : MonoBehaviour
         kitLoader.ChoosenKit("Kit Female 01");
         PlayerPrefs.SetString("selectedKit", "Kit Female 01");
 
-        PlayerPrefs.SetInt("male", (male ? 1 : 0));
+        // PlayerPrefs.SetInt("male", (male ? 1 : 0));
+        PlayerPrefs.SetInt("male", 0);
 
         UpdateSelection();
         UpdateButtonColor(male, skin);
@@ -122,5 +136,14 @@ public class ShopMenu : MonoBehaviour
         UpdateSelection();
         UpdateButtonColor(male, skin);
     }
-    
+
+    public void UpdateTotalBudget()
+    {
+        // GameData
+        totalCoins = StatsManager.Instance.totalCoins;
+        totalCoinsText.text = totalCoins.ToString(); 
+        
+        totalDiamonds = StatsManager.Instance.totalDiamonds;
+        totalDiamondsText.text = totalDiamonds.ToString();        
+    }    
 }

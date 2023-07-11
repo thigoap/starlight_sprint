@@ -8,20 +8,14 @@ public class Menus : MonoBehaviour
 {
 
     SceneChanger sceneChanger;
-    // Text highDistanceText;
 
     private void Awake()
     {
-        // highDistanceText = GameObject.Find("High Distance Distance Text").GetComponent<Text>();
         sceneChanger = GameObject.Find("SceneChanger").GetComponent<SceneChanger>();            
     }
 
     void Start()
     {
-        // float highDistance = PlayerPrefs.GetFloat("HighDistance");
-        // highDistanceText.text = highDistance + " m";
-
-        // Update Game Settings UI
     }
 
     public void Run()
@@ -38,7 +32,7 @@ public class Menus : MonoBehaviour
     public void ToCredits()
     {
         sceneChanger.ChangeScene("00 Credits");  
-        // PlayerPrefs.DeleteAll();
+        // GameManager.Instance.ResetSavedData();
     }
 
     public void ToConfig()

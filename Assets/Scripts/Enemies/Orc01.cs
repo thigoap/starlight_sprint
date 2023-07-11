@@ -3,19 +3,12 @@ using System.Collections;
 
 public class Orc01 : Enemy
 {
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {        
-        if (collider.CompareTag("Player"))
-        {
-            // if (playerController.isSliding || !playerController.isGrounded)
-            if (skinController.isSliding || !skinController.isGrounded)
-            {
+    private void OnTriggerEnter2D(Collider2D collider) {        
+        if (collider.CompareTag("Player")) {
+            if (skinController.isSliding || !skinController.isGrounded) {
                 StartCoroutine(KillEnemy());
                 powSR.enabled = true;
-            }
-            else
-            {
+            } else {
                 TakeHit();
                 gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             }

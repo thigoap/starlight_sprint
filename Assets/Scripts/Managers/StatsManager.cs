@@ -4,84 +4,117 @@ using UnityEngine;
 
 public class StatsManager : Singleton<StatsManager>
 {
+    private PlayerSavedData MyData = new PlayerSavedData();
+    
+    string skinName;
+    SkinController skinController;
+
+    [Header("Coins")]
     public int coinQtty = 0;
     public int totalCoins;
     public int multiplier = 1;
-
-    float distance;
+    
+    [Header("Diamonds")]
+    public int diamondQtty = 0;
+    public int totalDiamonds;
+    
+    [Header("Distance")]
     public float highDistance;
-
+    float distance;
+    
+    [Header("Enemies")]
     public int enemiesHit = 0;
     public int totalEnemiesHit;
     
-    void Start()
-    {
-        // only for testing
-        // PlayerPrefs.SetFloat("HighDistance", 0);
-        // PlayerPrefs.SetInt("TotalCoins", 0);
-        // PlayerPrefs.SetInt("TotalEnemiesHit", 0);
-        // only for testing
-
-        totalCoins = PlayerPrefs.GetInt("TotalCoins");
-        highDistance = PlayerPrefs.GetFloat("HighDistance");
-        totalEnemiesHit = PlayerPrefs.GetInt("TotalEnemiesHit");
+    void Start() {
+        LoadPlayerData();
     }
 
-    public void SaveStats()
-    {
-        SaveHighDistance();
+    public void UpdateStats() {
         SaveTotalCoins();
+        SaveTotalDiamonds();
+        SaveHighDistance();
         SaveEnemiesHit();
-        // multiplier = 1;
-        // coinQtty = 0;
-        // enemiesHit = 0;
+
+        SavePlayerData();
     }
 
-    public void SaveHighDistance()
-    {
+    public void SaveHighDistance() {
         distance = Mathf.FloorToInt(GameManager.Instance.distance);
-        highDistance = PlayerPrefs.GetFloat("HighDistance");
-        if (distance > highDistance)
-        {
-            PlayerPrefs.SetFloat("HighDistance", distance);
+        // load high distance from saved data
+        if (distance > highDistance) {
             highDistance = distance;
+            MyData.highDistance = highDistance;
             GameOverMenu.Instance.ShowRecordTag();
         }
     }
 
-    // public void LoadHighDistance()
-    // {
-    //     float highDistance = PlayerPrefs.GetFloat("HighDistance");
-    //     UIManager.Instance.highDistanceDistanceText.text = highDistance + " m";
-    // }
-
-    public void GainCoin(int amount)
-    {
+    public void GainCoin(int amount) {
         coinQtty += amount;
         UIManager.Instance.UpdateCoinQtty();
     }
 
-    public void SaveTotalCoins()
-    {
+    public void SaveTotalCoins() {
         totalCoins += coinQtty;
-        PlayerPrefs.SetInt("TotalCoins", totalCoins);
+        MyData.totalCoins = totalCoins;
     }
 
-    public void EnemyHit()
-    {
+    public void SaveTotalDiamonds() {
+        totalDiamonds += diamondQtty;
+        MyData.totalDiamonds = totalDiamonds;        
+    }
+
+    public void EnemyHit() {
         enemiesHit++;
         UIManager.Instance.UpdateEnemiesHit();
+        GameManager.Instance.ResetMultiplierTimer();
+
+        if (enemiesHit % 10 == 0) {
+            diamondQtty++;
+            
+            skinName = GameManager.Instance.DefineSkinName();
+            skinController = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<SkinController>(); 
+            skinController.GainDiamond();            
+        }
     }    
 
-    public void SaveEnemiesHit()
-    {
-        totalEnemiesHit += enemiesHit;    
-        PlayerPrefs.SetInt("TotalEnemiesHit", totalEnemiesHit);
+    public void SaveEnemiesHit() {
+        totalEnemiesHit += enemiesHit; 
+        MyData.highDistance = highDistance;   
     }
 
-    public void UpdateMultiplier()
-    {
+    public void UpdateMultiplier() {
         multiplier++;
         UIManager.Instance.UpdateMultiplier();
     }
+
+    public void SavePlayerData() {       
+        SaveSystem.CurrentPlayerData.PlayerSavedData = MyData;
+        SaveSystem.SavePlayerData();
+    }
+
+    public void LoadPlayerData() {
+        SaveSystem.LoadPlayerData();
+        MyData = SaveSystem.CurrentPlayerData.PlayerSavedData;
+        totalCoins = MyData.totalCoins;
+        totalDiamonds = MyData.totalDiamonds;
+        highDistance = MyData.highDistance;
+        totalEnemiesHit = MyData.totalEnemiesHit;
+    }
+
+    public void UpdateWithResetedData() {
+        MyData.totalCoins = totalCoins;
+        MyData.totalDiamonds = totalDiamonds; 
+        MyData.highDistance = highDistance;
+        MyData.highDistance = highDistance;
+    }
+}
+
+[System.Serializable]
+public struct PlayerSavedData
+{
+    public int totalCoins;
+    public int totalDiamonds;
+    public float highDistance;
+    public int totalEnemiesHit;
 }

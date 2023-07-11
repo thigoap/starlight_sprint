@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
             if (life == 1)
             {
                 kitController.HideLife();
-                Debug.Log("Hide Life");
+                // Debug.Log("Hide Life");
             }
             if (life == 0)
             {

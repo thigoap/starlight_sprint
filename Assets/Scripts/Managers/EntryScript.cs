@@ -6,10 +6,17 @@ public class EntryScript : MonoBehaviour
 {
 
     public Animator animator;
+    AudioSource SFXSource;
+
+    void Start()
+    {
+        SFXSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+    }
 
     public void CallStartGame()
     {
         GameManager.Instance.StartGame();
+        SFXSource.volume = 0.2f;
     }
 
     public void AudioStart()

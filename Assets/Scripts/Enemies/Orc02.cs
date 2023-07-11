@@ -5,23 +5,17 @@ public class Orc02 : Enemy
 {
     float speed = 2;
 
-    void Update()
-    {
+    void Update() {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {        
-        if (collider.CompareTag("Player"))
-        {
+    private void OnTriggerEnter2D(Collider2D collider) {        
+        if (collider.CompareTag("Player")) {
             // if (playerController.isSliding)
-            if (skinController.isSliding)
-            {
+            if (skinController.isSliding) {
                 StartCoroutine(KillEnemy());
                 powSR.enabled = true;
-            }
-            else
-            {
+            } else {
                 TakeHit();
                 gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             }

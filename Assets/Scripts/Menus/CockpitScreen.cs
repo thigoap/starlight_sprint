@@ -5,22 +5,42 @@ using TMPro;
 
 public class CockpitScreen : Singleton<CockpitScreen>
 {
-
     public TextMeshProUGUI totalCoinsText;
     int totalCoins;
+    public TextMeshProUGUI totalDiamondsText;
+    int totalDiamonds;
     public TextMeshProUGUI highDistanceText;
     float highDistance;
 
     void Start()
     {
+        // PlayerData data = SaveSystem.LoadPlayerData();
+
         totalCoinsText = GameObject.Find("Coins Quantity Text").GetComponent<TextMeshProUGUI>();
-        totalCoins = PlayerPrefs.GetInt("TotalCoins");
+        // PlayerPrefs
+        // totalCoins = PlayerPrefs.GetInt("TotalCoins");
+        
+        // SaveSystem
+        totalCoins = StatsManager.Instance.totalCoins;
+
         totalCoinsText.text = totalCoins.ToString();
 
-        highDistanceText = GameObject.Find("High Distance Text").GetComponent<TextMeshProUGUI>();
-        highDistance = PlayerPrefs.GetFloat("HighDistance");
-        highDistanceText.text = highDistance.ToString() + " m";
-
+        totalDiamondsText = GameObject.Find("Diamonds Quantity Text").GetComponent<TextMeshProUGUI>();
+        // PlayerPrefs
+        // totalDiamonds = PlayerPrefs.GetInt("TotalDiamonds");
         
+        // SaveSystem
+        totalDiamonds = StatsManager.Instance.totalDiamonds;
+
+        totalDiamondsText.text = totalDiamonds.ToString();
+
+        highDistanceText = GameObject.Find("High Distance Text").GetComponent<TextMeshProUGUI>();
+        // PlayerPrefs
+        // highDistance = PlayerPrefs.GetFloat("HighDistance");
+        
+        // SaveSystem
+        highDistance = StatsManager.Instance.highDistance;
+
+        highDistanceText.text = highDistance.ToString() + " m";
     }
 }

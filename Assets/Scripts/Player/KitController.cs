@@ -23,6 +23,8 @@ public class KitController : MonoBehaviour
     public bool isGrounded;
     public bool isSliding;
 
+    public GameObject skinPosition;
+
     // Double Jump
     bool doubleJump;
 
@@ -33,11 +35,17 @@ public class KitController : MonoBehaviour
     // Jump Buffer
     // float jumpBufferLength = 0.01f;
     // public float jumpBufferCounter;
+    
+    string skinName;
+    SkinController skinController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        skinName = PlayerPrefs.GetString("selectedSkin");
+        skinController = GameObject.Find("Player " + skinName + "(Clone)").GetComponent<SkinController>();
     }
 
     void Update()
@@ -49,7 +57,13 @@ public class KitController : MonoBehaviour
 
         animator.SetBool("isJumping", !isGrounded);
         animator.SetFloat("yVelocity", rb.velocity.y);
-        animator.SetBool("isSliding", isSliding);    
+        animator.SetBool("isSliding", isSliding);  
+
+        // Debug.Log(transform.position);
+        // Debug.Log("skin" + skinController.transform.position);
+        if (skinController.transform.position.y != transform.position.y)
+            transform.position = skinController.transform.position;
+        
     }
 
     void FixedUpdate()
@@ -89,7 +103,6 @@ public class KitController : MonoBehaviour
         if (hangTimeCounter > 0f) /* coyote time */
         // if (jumpBufferCounter >= 0f || hangTimeCounter >= 0f) /* jump buffer + coyote time */
         {
-            AudioManager.Instance.PlayJumpSFX();
             rb.velocity = new Vector2(0, jumpForce);
             /* double jump */
             doubleJump = true;
@@ -102,7 +115,6 @@ public class KitController : MonoBehaviour
 
         } else if (doubleJump)
         {
-            AudioManager.Instance.PlayJumpSFX();
             rb.velocity = new Vector2(0, jumpForce);
             doubleJump = false;       
         }
@@ -118,18 +130,14 @@ public class KitController : MonoBehaviour
     {
         if (!isSliding && canSlide)
         {
-            AudioManager.Instance.PlaySlideSFX();
-            GameManager.Instance.velocity = 24f;
             isSliding = true;
         }
     }
 
     public void ResetSlide()
     {
-        DustPool.instance.StopDustEffect();
         isSliding = false;
         rb.gravityScale = 7f;
-        GameManager.Instance.velocity = 12f;
         slideTimeCounter = slideTime;
     }
 
